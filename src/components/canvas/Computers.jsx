@@ -1,16 +1,18 @@
 /* eslint-disable react/prop-types */
 /* eslint-disable react/no-unknown-property */
 import { Suspense, useEffect, useState } from "react";
-import { Canvas } from "@react-three/fiber";
+import { Canvas, useFrame } from "@react-three/fiber";
 import { OrbitControls, Preload, useGLTF } from "@react-three/drei";
-import { useFrame } from "@react-three/fiber";
 import CanvasLoader from "../Loader";
 
 const Computers = ({ isMobile }) => {
   const computer = useGLTF("./desktop_pc/scene.gltf");
 
+  // Add rotation
   useFrame(() => {
-    computer.scene.rotation.y += 0.01; // Adjust the rotation speed as needed
+    if (computer && computer.scene) {
+      computer.scene.rotation.y += 0.01; // Adjust the rotation speed as needed
+    }
   });
 
   return (
@@ -34,7 +36,6 @@ const Computers = ({ isMobile }) => {
     </mesh>
   );
 };
-
 
 const ComputersCanvas = () => {
   const [isMobile, setIsMobile] = useState(false);
