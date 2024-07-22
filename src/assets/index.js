@@ -1,4 +1,4 @@
-import me from "./me.png";
+import me from "./vic.png";
 import spotify from "./Spotify_Clone.png";
 import github from "./github.png";
 import menu from "./menu.svg";
